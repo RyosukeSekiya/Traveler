@@ -1,2 +1,6 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<% if @user.image? %>  <!-- アップロード画像がある場合に実行する -->
+  <p>
+    <strong>Profile:</strong>
+    <%= image_tag @user.image.url %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
+  </p>
+<% end %>
