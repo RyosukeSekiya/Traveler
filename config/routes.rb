@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   end
 
   get "users/:id" => "users#show", as: :mypage
+  
+  
 end
