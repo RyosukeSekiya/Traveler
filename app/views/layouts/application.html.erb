@@ -15,26 +15,49 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
-  
-  
-     <nav>
-      <% if user_signed_in? %> 
-        <%= link_to 'プロフィール変更', edit_user_registration_path %> |
-        <%= link_to "ログアウト", sign_out_path %>
-      <% else %>
-        <%= link_to "サインイン", new_user_registration_path %> |
-        <%= link_to "ログイン", new_user_session_path %>
-      <% end %>
-    </nav>
+
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-expand navbar-dark bg-dark fixed-top">
+        <% if user_signed_in? %> 
+          <%= link_to "TRAVELER",root_path,id:"logo",class: "navbar-brand" %>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <%= link_to "投稿する",new_post_path,class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "マイページ",mypage_path(current_user.id),class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト",sign_out_path,class: "nav-link" %>
+            </li>
+          </ul>
+        <% else %>
+          <%= link_to "TRAVELER", root_path,id:"logo",class:"navbar-brand" %>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"> 
+              <%= link_to "サインイン",new_user_registration_path,class: "nav-link" %>
+            </li> 
+            <li class="nav-item">
+              <%= link_to "ログイン",new_user_session_path,class: "nav-link"  %>
+            </li> 
+          </ul>
+        <% end %>
+      </nav>
+    </header>
     
-    <div class="container">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-
+    <div class="container ">
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
       <%= yield %>
+      <br>
     </div>
+    <br>
+    <footer class="footer">
+      <p class="text-muted text-center">Traveler</p>
+      <p class="text-muted text-center">© 2020 @RYoCHi All Rights Reserved.</p>
+    </footer>
   </body>
 </html>

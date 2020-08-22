@@ -14,10 +14,8 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
   
-  
-  #画像の拡張子が指定されていないとエラーが出る
   def extension_whitelist
-    %w(jpeg git png jpg)
+    %w(jpeg gif png jpg svg svgz pjpeg jfif jpe)
   end
 
   def filename

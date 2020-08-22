@@ -18,4 +18,5 @@ class User < ApplicationRecord
   result
   end
 
+  has_many :posts, dependent: :destroy
 end

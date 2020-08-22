@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :posts
   root to: 'toppages#index'
  
   devise_for :users, :controllers => {
@@ -14,5 +13,5 @@ Rails.application.routes.draw do
 
   get "users/:id" => "users#show", as: :mypage
   
-  
+  resources :posts
 end

@@ -1,6 +1,0 @@
-<% if @user.image? %>  <!-- アップロード画像がある場合に実行する -->
-  <p>
-    <strong>Profile:</strong>
-    <%= image_tag @user.image.url %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
-  </p>
-<% end %>

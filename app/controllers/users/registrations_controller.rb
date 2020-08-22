@@ -63,10 +63,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super(resource)
   end
   
-  def after_update_up_path_for(resource)
-    # ここにページ遷移したいパスをいれる
-    user_path(resource)
+  def after_update_path_for(resource)
+    mypage_path(resource)
   end
+  
+  
  
   def update_resource(resource, params)
     resource.update_without_current_password(params)
