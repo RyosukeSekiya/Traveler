@@ -1,6 +1,23 @@
-<p id="notice"><%= notice %></p>
-
 <h1>投稿一覧</h1>
+
+
+<!--<div class="row">-->
+<!--  <% @posts.order("updated_at DESC").each do |post| %>-->
+<!--    <%= link_to post, class: 'col-3' do %>-->
+<!--      <div class="row">-->
+<!--        <% if post.image? %>-->
+<!--          <%= image_tag post.image.url %>-->
+<!--        <% end %>-->
+<!--      </div>-->
+<!--      <div class="row">-->
+<!--        <p><%= post.body %></p>-->
+<!--        <p><%= post.user.name %></p>-->
+<!--      </div>-->
+<!--      <% end %>-->
+<!--  <% end %>-->
+<!--</div>-->
+
+
 
 <table>
   <thead>
@@ -15,9 +32,15 @@
   <tbody>
     <% @posts.order("updated_at DESC").each do |post| %>
       <tr>
-        <td><%= post.image %></td>
+        <td>
+          <% if post.image? %>  <!-- アップロード画像がある場合に実行する -->
+            <p>
+              <%= image_tag post.image.url %><!-- userインスタンスの画像ファイルのURLを取得し表示 -->
+            </p>
+          <% end %>
+        </td>
         <td><%= post.body %></td>
-        <td><%= post.user %></td>
+        <td><%= post.user.name %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>

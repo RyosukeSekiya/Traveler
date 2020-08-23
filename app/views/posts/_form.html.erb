@@ -11,9 +11,22 @@
     </div>
   <% end %>
   
+<!--  %img#user_img_prev.d-none.user-photo.w-25-->
+<!--- if current_user.image?-->
+<!--  = image_tag current_user.image.to_s, class: 'user_present_img user-photo w-25'-->
+<!--- else-->
+<!--  = image_tag asset_pack_path('media/images/no-user-image.png').to_s, class: 'present_img user-photo w-25'-->
+<!--= f.input :image, as: :file-->
   
   <div class="form-group">
     <%= form.label :写真を選択 %>
+      <div class="card">
+        <div class="card-body">
+          <div class="text-center">
+            <%= image_tag @post.image.url, id: :user_img_prev if @post.image?%>
+          </div>
+        </div>
+      </div>
     <%= form.file_field :image,class:'form-control' %>
   </div>
   

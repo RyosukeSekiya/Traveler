@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   } 
 
   devise_scope :user do
-    get "sign_in", :to => "users/sessions#new"
-    get "sign_out", :to => "users/sessions#destroy" 
+    get "sign_in", to: 'users/sessions#new'
+    get "sign_out", to: 'users/sessions#destroy'
   end
 
   get "users/:id" => "users#show", as: :mypage
   
-  resources :posts
+  resources :posts, only: %i[new show edit update destroy create]
 end

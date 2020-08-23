@@ -1,13 +1,14 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update]
   before_action :authenticate_user!
+  before_action :correct_user, only: [:destroy]
   
   def index
     @posts = Post.all
   end
 
   def new
-    @post = Post.new
+    @post = current_user.posts.build
   end
 
   def show
@@ -17,46 +18,42 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
-    
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: '写真を投稿しました。' }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    @post = current_user.posts.build(post_params)
+    if @post.save
+      redirect_to root_path, notice: '写真を投稿しました。'
+    else
+      render :new
     end
   end
   
   def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to @post, notice: '投稿を編集しました。' }
-        format.json { render :show, status: :ok, location: @post }
-      else
-        format.html { render :edit }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.update(post_params)
+      redirect_to @post, notice: '投稿を編集しました。'
+    else
+      render :edit
     end
   end
 
   def destroy
-    @post.destroy
-    respond_to do |format|
-      format.html { redirect_to posts_url, notice: '投稿を削除しました。' }
-      format.json { head :no_content }
+    if @post.destroy
+      redirect_back(fallback_location: root_path)
+      flash[:notice] = '投稿を削除しました。'
     end
   end
 
   private
     def set_post
-      @post = Post.find(params[:id])
+      @post = Post.find_by(id:params[:id])
     end
 
     def post_params
       params.require(:post).permit(:image, :body)
+    end
+    
+    def correct_user
+      @post = current_user.posts.find_by(id: params[:id])
+      unless @post
+        redirect_to root_path
+      end
     end
 end
