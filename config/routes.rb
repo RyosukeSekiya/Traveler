@@ -13,5 +13,12 @@ Rails.application.routes.draw do
 
   get "users/:id" => "users#show", as: :mypage
   
-  resources :posts, only: %i[new show edit update destroy create]
+  resources :users, only: %i[show edit new update create] do
+    member do
+      get :likes
+    end
+  end
+  
+  resources :likes, only: %i[create destroy]
+  resources :posts, only: %i[new show edit update destroy create] 
 end

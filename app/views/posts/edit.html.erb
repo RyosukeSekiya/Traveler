@@ -1,11 +1,21 @@
-<div class="row">
-  <div class="col-sm-6 offset-sm-3">
-    
-    <h1>投稿を編集する</h1>
-    <%= render 'form', post: @post %>
-   
-    <%= link_to :back do %>
+<% if user_signed_in? && @post.user_id == current_user.id %>
+  <div class="row">
+    <div class="col-sm-6 offset-sm-3">
+      
+      <h1>投稿を編集する</h1>
+      <%= render 'form', post: @post %>
+     
+      <%= link_to :back do %>
       <button>戻る</button>
-    <% end %>
-  </div>
-</div>
+      <% end %>
+    </div>
+  </div
+<% else %>
+<h2>この投稿は編集できません。</h2>
+  <%= link_to :back do %>
+    <button>戻る</button>
+  <% end %>
+  <%= link_to root_path  do %>
+    <button>トップページへ</button>
+  <% end %>
+<% end %>

@@ -1,12 +1,28 @@
-<table>
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.image %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<ul class="list-unstyled">
+  <% posts.each do |post| %>
+    <li class="media mb-3">
+         
+      <div class="media-body">
+        <div>
+          <%= link_to post.user.name, mypage_path(post.user) %> <span class="text-muted">posted at <%= post.created_at %></span>
+        </div>
+         <div>
+          <p class="mb-2"><%= image_tag (post.image.url) %></p>
+        </div>
+        <div>
+          <p class="mb-2"><%= post.body %></p>
+        </div>
+        <div>
+          <% if current_user == post.user %>
+            <%= link_to "削除", post, method: :delete, data: { confirm: "削除してもよろしいですか?" }, class: 'btn btn-danger btn-sm' %>
+            <%= link_to '編集', edit_post_path(post),class: 'btn btn-danger btn-sm' %>
+          <% end %>
+        </div>
+         <%= render 'likes/like_button',post: post %>
+      </div>
+    </li>
+  <% end %>
+ 
+</ul>
+
+

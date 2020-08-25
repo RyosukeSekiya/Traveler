@@ -1,31 +1,20 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   
-  # def index
-  # end
-
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.order(id: :desc)
+    @posts = @user.posts.order(id: :desc).page(params[:page])
     counts(@user)
   end
-
-  # def new
-  # end
-
-  # def create
-  # end
 
   def edit
     @user = User.find(params[:id])
   end
 
-  # def update
-  # end
-
-  # def destroy
-  # end
-  
+  def likes
+    @user = User.find(params[:id])
+    @likes = @user.favorites.page(params[:page])
+  end
   
   private
 
