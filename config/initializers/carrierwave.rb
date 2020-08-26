@@ -19,13 +19,19 @@ elsif Rails.env.test?
   end 
 else
   CarrierWave.configure do |config|
+    config.storage :fog
+    config.fog_provider = 'fog/aws'
     config.fog_credentials = {
     provider: 'AWS',
     aws_access_key_id: ENV['S3_ACCESS_KEY'],
     aws_secret_access_key: ENV['S3_SECRET_KEY'],
     region: ENV['S3_REGION']
   	}
+  	config.fog_directory  = 'rails-imageimage'
+  	config.asset_host = 'https://rails-imageimage.s3.amazonaws.com'
     config.cache_storage = :fog # fogを使う環境だけに適用
   end 
 end
 # end
+
+
