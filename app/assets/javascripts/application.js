@@ -17,22 +17,7 @@
 //= require jquery
 //= require jquery_ujs
 
-/* global $ */
-function readURL(input) {
-  if (input.files && input.files[0]) {
-    let reader = new FileReader();
-    reader.onload = function (e) {
-      $('#user_img_prev').attr('src', e.target.result);
-    }
-    reader.readAsDataURL(input.files[0]);
-  }
-}
 
-$('#user_img_prev').change(() => {
-  $('#user_img_prev').removeClass('d-none');
-  $('.present_img').remove();
-  readURL(this);
-});
 
 
 
