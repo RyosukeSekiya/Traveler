@@ -39,3 +39,7 @@ gem 'kaminari'
 gem 'jquery-rails'
 gem 'pry-rails'
 gem 'dotenv-rails'
+
+group :production do
+  gem 'pg', '>=0.18','<2.0'
+end
