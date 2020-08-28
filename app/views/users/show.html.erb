@@ -1,7 +1,3 @@
-<% content_for :css do %>
-<%= stylesheet_link_tag 'users' %>
-<% end %>
-
 <div class="row">
 <% if @user.id == current_user.id %>
   <%= link_to 'プロフィール編集', edit_user_registration_path %>
@@ -19,11 +15,10 @@
       </div>
     </div>
   </div>
-  
 </aside>
 <div class="col-sm-8">
   <ul class="nav nav-tabs nav-justified mb-3">
-    <li class="nav-item"><a href="<%= mypage_path(@user) %>" class="nav-link <%= 'active' if current_page?(mypage_path(@user)) %>">投稿 <span class="badge badge-secondary"><%= @count_posts %></span></a></li>
+    <li class="nav-item"><a href="<%= mypage_path(@user) %>" class="nav-link <%= 'active' if current_page?(mypage_path(@user)) %>">投稿 <span class="badge badge-secondary"></span></a></li>
     <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">お気に入り<span class="badge badge-secondary"></span></a></li>
   </ul>
   <%= render 'posts/myposts', posts: @posts %>

@@ -1,4 +1,4 @@
-<h1>投稿一覧</h1>
+<h1>みんなの投稿</h1>
 
 <% if user_signed_in? %> 
  <div class="row">
@@ -6,13 +6,6 @@
      <%= render 'posts/myposts' , posts: @posts %>
    </div>
  </div>
-<% else %>  
-  <div class="center jumbotron">
-    <div class="text-center">
-      <h1>Welcome to the Traveler</h1>
-      <%= link_to 'サインイン!',new_user_registration_path , class: 'btn btn-lg btn-primary' %>
-    </div>
-  </div>
 <% end %>
 
 

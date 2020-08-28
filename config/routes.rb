@@ -21,4 +21,7 @@ Rails.application.routes.draw do
   
   resources :likes, only: %i[create destroy]
   resources :posts, only: %i[new show edit update destroy create] 
+  
+  get '*not_found', to: 'application#routing_error'
+  post '*not_found', to: 'application#routing_error'
 end
