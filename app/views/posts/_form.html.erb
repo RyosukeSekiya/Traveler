@@ -1,37 +1,23 @@
 <%= form_with(model: post, local: true) do |form| %>
+  
   <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
+    <div class="alert alert-warning">
       <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% post.errors.full_messages.each do |message| %>
+          <li><%= message %></li> 
+        <% end %>
       </ul>
     </div>
   <% end %>
   
-<!--  %img#user_img_prev.d-none.user-photo.w-25-->
-<!--- if current_user.image?-->
-<!--  = image_tag current_user.image.to_s, class: 'user_present_img user-photo w-25'-->
-<!--- else-->
-<!--  = image_tag asset_pack_path('media/images/no-user-image.png').to_s, class: 'present_img user-photo w-25'-->
-<!--= f.input :image, as: :file-->
-  
   <div class="form-group">
-    <%= form.label :写真を選択 %>
-      <div class="card">
-        <div class="card-body">
-          <div class="text-center">
-            <%= image_tag @post.image.url, id: :user_img_prev if @post.image?%>
-          </div>
-        </div>
-      </div>
+    <%= form.label :画像 %>
+    <%= image_tag @post.image.url, id: :user_img_prev if @post.image?%>
     <%= form.file_field :image,class:'form-control' %>
   </div>
   
   <div class="form-group">
-    <%= form.label :写真にコメントを添えましょう。 %>
+    <%= form.label :コメント %>
     <%= form.text_field :body,class:'form-control' %>
   </div>
 
@@ -39,5 +25,7 @@
     <%= form.submit "送信する", class: 'btn btn-primary btn-block'  %>
   </div>
 <% end %>
+
+
 
     

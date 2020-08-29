@@ -20,6 +20,13 @@
 
   <body>
     <header>
+      
+      <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+        </div>
+      </div>
       <nav class="navbar navbar-expand navbar-dark bg-dark fixed-top">
         <% if user_signed_in? %> 
           <%= link_to "TRAVELER",root_path,id:"logo",class: "navbar-brand" %>
@@ -46,16 +53,10 @@
           </ul>
         <% end %>
       </nav>
+      </div>
     </header>
     
     <div class="container">
-      <div class="row">
-        <div class="col-sm-6 offset-sm-3">
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
-        </div>
-      </div>
-      
       <%= yield %>
       <br>
     </div>

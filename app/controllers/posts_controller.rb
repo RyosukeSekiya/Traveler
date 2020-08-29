@@ -16,9 +16,11 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to root_path, notice: '写真を投稿しました。'
+        flash[:success] = '写真を投稿しました。'
+        redirect_to root_path
     else
-      render :new
+        flash.now[:danger] = '写真の投稿に失敗しました。'
+        render :new
     end
   end
   

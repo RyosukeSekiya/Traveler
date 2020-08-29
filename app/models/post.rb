@@ -4,5 +4,6 @@ class Post < ApplicationRecord
  
   validates :image, presence: true
   validates :body, length: { in: 0..100 }
+  
   mount_uploader :image, ImageUploader
 end

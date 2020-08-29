@@ -24,5 +24,7 @@ module Traveler
     config.i18n.default_locale = :ja
     
     config.generators.system_tests = nil
+   
   end
 end
+

@@ -6,6 +6,10 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    attributes:
+      post:
+        image: 画像
+        body: コメント
   date:
     abbr_day_names:
     - 日
@@ -109,7 +113,7 @@ ja:
     format: "%{attribute}%{message}"
     messages:
       accepted: を受諾してください
-      blank: を入力してください
+      blank: を選択してください
       confirmation: と%{attribute}の入力が一致しません
       empty: を入力してください
       equal_to: は%{count}にしてください
@@ -204,3 +208,4 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  
