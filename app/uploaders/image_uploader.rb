@@ -1,6 +1,6 @@
 class ImageUploader < CarrierWave::Uploader::Base
  include CarrierWave::MiniMagick
- process resize_to_limit: [200, 200]
+ process resize_to_limit: [400, 400]
   
   if Rails.env.development?
     storage :file

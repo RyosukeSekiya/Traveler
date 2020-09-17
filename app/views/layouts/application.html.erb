@@ -6,7 +6,10 @@
     <title>Traveler</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Indie+Flower&family=Lato&display=swap');
+    </style>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -15,40 +18,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
-    
   </head>
 
   <body>
     <header>
-      
       <div class="row">
         <div class="col-sm-6 offset-sm-3">
           <p class="notice"><%= notice %></p>
           <p class="alert"><%= alert %></p>
         </div>
       </div>
-      <nav class="navbar navbar-expand navbar-dark bg-dark fixed-top">
+      <nav class="navbar navbar-expand fixed-top">
         <% if user_signed_in? %> 
           <%= link_to "TRAVELER",root_path,id:"logo",class: "navbar-brand" %>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <%= link_to "投稿する",new_post_path,class:"nav-link" %>
+              <%= link_to "NEW POSTS",new_post_path,class:"nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to "マイページ",mypage_path(current_user.id),class:"nav-link" %>
+              <%= link_to "MY PAGE",mypage_path(current_user.id),class:"nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to "ログアウト",sign_out_path,class: "nav-link" %>
+              <%= link_to "LOG OUT",sign_out_path,class: "nav-link" %>
             </li>
           </ul>
         <% else %>
           <%= link_to "TRAVELER", root_path,id:"logo",class:"navbar-brand" %>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item"> 
-              <%= link_to "サインイン",new_user_registration_path,class: "nav-link" %>
+              <%= link_to "SIGN IN",new_user_registration_path,class: "nav-link" %>
             </li> 
             <li class="nav-item">
-              <%= link_to "ログイン",new_user_session_path,class: "nav-link"  %>
+              <%= link_to "LOG IN",new_user_session_path,class: "nav-link"  %>
             </li> 
           </ul>
         <% end %>
@@ -58,9 +59,8 @@
     
     <div class="container">
       <%= yield %>
-      <br>
     </div>
-    <br>
+
     <footer class="footer">
       <p class="text-muted text-center">Traveler</p>
       <p class="text-muted text-center">© 2020 @RYoCHi All Rights Reserved.</p>

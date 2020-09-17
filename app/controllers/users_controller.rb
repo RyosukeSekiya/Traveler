@@ -1,22 +1,22 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_user, only: %i[show edit likes]
   
   def show
-    @user = User.find(params[:id])
     @posts = @user.posts.order(id: :desc).page(params[:page])
-    counts(@user)
   end
 
-  def edit
-    @user = User.find(params[:id])
-  end
+  def edit; end
 
   def likes
-    @user = User.find(params[:id])
     @likes = @user.favorites.page(params[:page])
   end
   
   private
+  
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:name, :email, :encrypted_password, :image)

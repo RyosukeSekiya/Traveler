@@ -1,23 +1,25 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show,:update,:edit,:destroy]
+  before_action :set_post, only: %i[show update edit destroy]
   before_action :authenticate_user!
-  before_action :correct_user, only: [:destroy]
+  before_action :correct_user, only: %i[destroy]
+  
+  def index
+    @posts = Post.order(created_at: :desc).page(params[:page])
+  end
+  
   
   def new
     @post = current_user.posts.build
   end
 
-  def show
-  end
+  def show; end
   
-  def edit
-  end
+  def edit; end
   
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-        flash[:success] = '写真を投稿しました。'
-        redirect_to root_path
+        redirect_to root_path, notice:'写真を投稿しました。'
     else
         flash.now[:danger] = '写真の投稿に失敗しました。'
         render :new
@@ -33,10 +35,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    if @post.destroy
-      redirect_back(fallback_location: root_path)
-      flash[:notice] = '投稿を削除しました。'
-    end
+    @post.destroy
+    redirect_to root_path, notice: '投稿を削除しました。'
   end
 
   private

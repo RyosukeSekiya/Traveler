@@ -1,0 +1,70 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+.navbar a{
+  font-family: 'Poiret One', cursive;
+  background: white;
+  color: olive;
+  font-size: 20px;
+  margin: 0px;
+  padding: 10px;
+}
+ 
+.footer{
+  font-family: 'Dancing Script', cursive;
+  bottom: 0;
+  height: 5em;
+  padding: 15px;
+  width: 100%;
+  background-color: #f8f8f8;
+  border-color: #e7e7e7;
+  border-width: 1px 0px 0px;
+}
+
+.navbar {
+  background-color: olive;
+  opacity: 0.9;
+}
+
+body{
+  margin-top: 40px;
+  margin-bottom: 5em;
+  background-color:  #fcfcfc;
+}
+
+.aside{
+  margin-bottom: 10px;
+}
+
+.login{
+   font-family: 'Poiret One', cursive;
+}
+
+.signin{
+   font-family: 'Poiret One', cursive;
+}
+
+.edit{
+   font-family: 'Poiret One', cursive;
+}
+
+.notice{
+  margin-top: 30px;
+}
+
+.alert{
+  margin-top: 30px;
+}
+

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'toppages#index'
+  root to: 'posts#index'
  
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   end
   
   resources :likes, only: %i[create destroy]
-  resources :posts, only: %i[new show edit update destroy create] 
+  resources :posts
   
   get '*not_found', to: 'application#routing_error'
   post '*not_found', to: 'application#routing_error'

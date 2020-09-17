@@ -3,25 +3,24 @@
     <li class="media mb-3">
       <div class="media-body">
         <div>
-          <%= link_to post.user.name, mypage_path(post.user) %> <span class="text-muted">posted at <%= post.created_at %></span>
+          <%= link_to post.user.name, mypage_path(post.user) %> <span class="text-muted">posted at <%= datetime(post.created_at) %></span>
         </div>
          <div>
-          <p class="mb-2"><%= image_tag (post.image.url) %></p>
+          <p class="mb-2"><%= image_tag(post.image.url) %></p>
         </div>
         <div>
           <p class="mb-2"><%= post.body %></p>
         </div>
-        <div>
+        <div >
           <% if current_user == post.user %>
             <%= link_to "削除", post, method: :delete, data: { confirm: "削除してもよろしいですか?" }, class: 'btn btn-danger btn-sm' %>
             <%= link_to '編集', edit_post_path(post),class: 'btn btn-danger btn-sm' %>
           <% end %>
+          <%= render 'likes/like_button', post: post %>
         </div>
-         <%= render 'likes/like_button',post: post %>
       </div>
     </li>
   <% end %>
- 
 </ul>
 
 

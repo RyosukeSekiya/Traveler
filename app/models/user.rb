@@ -29,15 +29,6 @@ class User < ApplicationRecord
     result
   end
   
-  # User user = new User('佐藤', 22)
-  
-  # class User extends SomeModel {
-  #   User(String name, int age) {
-  #     this.name = name;
-  #     this.age  = age;
-  #   }
-  # }
-  
   def like(post)
     likes.find_or_create_by(post_id: post.id)
   end
