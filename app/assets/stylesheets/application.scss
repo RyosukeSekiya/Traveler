@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+ 
 .navbar a{
   font-family: 'Poiret One', cursive;
   background: white;
@@ -66,5 +67,72 @@ body{
 
 .alert{
   margin-top: 30px;
+}
+
+.heart-red {
+  color: #FF0033;	
+}
+
+.heart-green{
+  color: #2F4F4F;
+}
+
+.user-edit{
+  color: #2F4F4F;
+}
+
+.delete-btn{
+  color: #2F4F4F;
+}
+
+.edit-btn{
+  color: #2F4F4F;
+}
+
+.back{
+  color: #2F4F4F;
+}
+
+.root{
+  color: #2F4F4F;
+}
+
+
+
+
+
+.heart-red:hover{
+  color: #FF0033;	
+  background: #CCCCCC;	
+}
+
+.heart-green:hover{
+  color: #2F4F4F;
+  background: #CCCCCC;	
+}
+
+.user-edit:hover{
+  color: #2F4F4F;
+  background: #CCCCCC;	
+}
+
+.delete-btn:hover{
+  color: #2F4F4F;
+  background: #CCCCCC;	
+}
+
+.edit-btn:hover{
+  color: #2F4F4F;
+  background: #CCCCCC;	
+}
+
+.back:hover{
+  color: #2F4F4F;
+  background: #CCCCCC;	
+}
+
+.root:hover{
+  color: #2F4F4F;
+  background: #CCCCCC;	
 }
 

@@ -2,5 +2,9 @@
   <div class="col-sm-6 offset-sm-3">
     <div class ="text-center post"><h2>NEW POSTS</h2></div>
     <%= render 'form', post: @post %>
+    
+    <%= link_to :back do %>
+     <i class="fas fa-backward fa-lg back"></i>
+    <% end %>
   </div>
 </div>

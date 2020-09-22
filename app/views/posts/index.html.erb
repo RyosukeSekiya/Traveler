@@ -19,15 +19,31 @@
                  <div>
                   <p class="mb-2"><%= image_tag(post.image.url) %></p>
                 </div>
+                
                 <div>
-                  <p class="mb-2"><%= post.body %></p>
-                </div>
-                <div >
-                  <% if current_user == post.user %>
-                    <%= link_to "削除", post, method: :delete, data: { confirm: "削除してもよろしいですか?" }, class: 'btn btn-danger btn-sm' %>
-                    <%= link_to '編集', edit_post_path(post),class: 'btn btn-danger btn-sm' %>
-                  <% end %>
-                  <%= render 'likes/like_button', post: post %>
+                  <div class="row">
+                    <div class="col-2">
+                      <%= render 'likes/like_button', post: post %>
+                    </div>
+                    <% if current_user == post.user %>
+                      <div class="col-2">
+                        <%= link_to post, method: :delete, data: { confirm: "削除してもよろしいですか?" } do %>
+                          <i class="far fa-trash-alt fa-lg delete-btn"></i>
+                        <% end %>
+                      </div>
+                      <div class="col-2">
+                        <%= link_to edit_post_path(post) do %>
+                          <i class="far fa-edit fa-lg edit-btn"></i>
+                        <% end %>
+                      </div>
+                    <% end %>
+                  </div>
+                  
+                  <div>
+                    <p class="mb-5 mt-3">
+                      <i class="fas fa-comment fa-lg "></i><%= post.body %>
+                    </p>
+                  </div>
                 </div>
               </div>
             </li>

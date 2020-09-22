@@ -4,14 +4,14 @@
       <div class="text-center post"><h2>POSTS EDIT</h2></div>
       <%= render 'form', post: @post %>
       <%= link_to :back do %>
-      <button>戻る</button>
+      <i class="fas fa-backward fa-lg back"></i>
       <% end %>
     </div>
   </div
 <% else %>
 <h2>この投稿は編集できません。</h2>
   <%= link_to :back do %>
-    <button>戻る</button>
+   <i class="fas fa-backward fa-lg back"></i>
   <% end %>
   <%= link_to root_path  do %>
     <button>トップページへ</button>
