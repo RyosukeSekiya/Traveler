@@ -1,38 +1,48 @@
 <ul class="list-unstyled">
   <% posts.each do |post| %>
-    <li class="media mb-3">
+    <li class="media mt-5">
       <div class="media-body">
-        <div>
-          <%= link_to post.user.name, mypage_path(post.user) %> <span class="text-muted">posted at <%= datetime(post.created_at) %></span>
-        </div>
-         <div>
-          <p class="mb-2"><%= image_tag(post.image.url) %></p>
-        </div>
-       
-        <div class="row">
-          <div class="col-1">
-            <%= render 'likes/like_button', post: post %>
-          </div>
-          <% if current_user == post.user %>
-            <div class="col-1">
-              <%= link_to post, method: :delete, data: { confirm: "削除してもよろしいですか?" } do %>
-                <i class="far fa-trash-alt fa-lg delete-btn"></i>
-              <% end %>
-            </div>
-            <div class="col-1">
-              <%= link_to edit_post_path(post) do %>
-                <i class="far fa-edit fa-lg edit-btn"></i>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
         
         <div>
-          <p class="mb-5 mt-3">
+        <%= link_to post.user.name, mypage_path(post.user) %> 
+        </div>
+        <div>
+          <p class="mb-2"><%= image_tag(post.image.url) %></p>
+        </div>
+        <div>
+          <p>
             <i class="fas fa-comment fa-lg "></i><%= post.body %>
+            <br>
+            <span class="text-muted"><%= datetime(post.created_at) %></span>
           </p>
         </div>
-
+        
+        <div class="container">
+          <div class="row">
+            <div class="box">
+              <div class="col-2 btn">
+                <%= render 'likes/like_button', post: post %>
+              </div>
+            </div>
+            <% if current_user == post.user %>
+              <div class="box">
+                <div class="col-2 btn">
+                  <%= link_to post, method: :delete, data: { confirm: "削除してもよろしいですか?" } do %>
+                    <i class="far fa-trash-alt fa-lg delete-btn"></i>
+                  <% end %>
+                </div>
+              </div>
+              <div class="box">
+                <div class="col-2 btn">
+                  <%= link_to edit_post_path(post) do %>
+                    <i class="far fa-edit fa-lg edit-btn"></i>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        
       </div>
     </li>
   <% end %>

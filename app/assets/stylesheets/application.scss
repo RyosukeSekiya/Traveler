@@ -14,10 +14,19 @@
  *= require_self
  */
  
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+.post h2{
+  font-size: 40px;
+}
+ 
 .navbar a{
   font-family: 'Poiret One', cursive;
   background: white;
-  color: olive;
+  color: #3366FF;
   font-size: 20px;
   margin: 0px;
   padding: 10px;
@@ -25,7 +34,6 @@
  
 .footer{
   font-family: 'Dancing Script', cursive;
-  bottom: 0;
   height: 5em;
   padding: 15px;
   width: 100%;
@@ -34,9 +42,18 @@
   border-width: 1px 0px 0px;
 }
 
-.navbar {
-  background-color: olive;
-  opacity: 0.9;
+.navbar{
+  background-color: #33FFFF;
+}
+
+.navbar-toggler{
+  border-color: #FFFFFF;
+  background-color: #33FFFF;
+}
+
+.navbar-toggler-icon {
+  // 三本線の変更
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
 body{
@@ -97,10 +114,6 @@ body{
   color: #2F4F4F;
 }
 
-
-
-
-
 .heart-red:hover{
   color: #FF0033;	
   background: #CCCCCC;	
@@ -134,5 +147,55 @@ body{
 .root:hover{
   color: #2F4F4F;
   background: #CCCCCC;	
+}
+
+
+@media screen and (max-width: 1024px) and (orientation: portrait){
+  
+}
+@media screen and (max-width: 1024px){
+ 
+}
+@media screen and (max-width: 896px) and (orientation: landscape){
+  
+}
+@media screen and (max-width: 896px){
+  .parent {
+    flex-wrap: wrap;
+  }
+}
+@media screen and (max-width: 480px){
+  body{
+    font-size: 10px;
+  }
+}
+
+.box {
+    padding: 0.5em 1em;
+    color: #FFF;
+    background: #6eb7ff;
+    border-bottom: solid 6px #3f87ce;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+}
+.box{
+  .btn{
+    margin: 0; 
+    padding: 0;
+  }
+}
+
+
+.sub{
+  display: inline-block;
+  font-size: 12px;
+}
+
+.nav-item:hover{
+  opacity: 0.7;
+}
+
+.navbar-brand:hover{
+  opacity: 0.7;
 }
 

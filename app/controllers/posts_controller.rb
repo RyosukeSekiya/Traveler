@@ -7,7 +7,6 @@ class PostsController < ApplicationController
     @posts = Post.order(created_at: :desc).page(params[:page])
   end
   
-  
   def new
     @post = current_user.posts.build
   end
@@ -52,4 +51,5 @@ class PostsController < ApplicationController
   def correct_user
     redirect_to root_path unless current_user.posts.find(params[:id])
   end
+  
 end
