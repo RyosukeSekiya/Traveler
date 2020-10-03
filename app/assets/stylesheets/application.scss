@@ -185,6 +185,9 @@ body{
   }
 }
 
+.main{
+  width: 500px;
+}
 
 .sub{
   display: inline-block;
@@ -199,3 +202,7 @@ body{
   opacity: 0.7;
 }
 
+.comment{
+  width: 100%;
+  line-height: 1.5;
+}
