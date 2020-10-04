@@ -5,10 +5,10 @@
       <div class="card-body">
         <div class="text-center">
         <% if @post.image? %> 
-          <p>
-            <%= image_tag @post.image.url %>
-          </p>
+          <p><%= @post.user.name %></p>
+          <p><%= image_tag @post.image.url %></p>
         <% end %>
+        <p><div class="body-comment">コメント</div><%= @post.body %></p>
         </div>
       </div>
     </div>
