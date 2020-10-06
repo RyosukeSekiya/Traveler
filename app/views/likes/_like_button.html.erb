@@ -1,14 +1,14 @@
 <% if current_user.favorite?(post) %>
   <%= form_with(model: current_user.likes.find_by(post_id: post.id), local: true, method: :delete) do |f| %>
     <%= hidden_field_tag :post_id, post.id %>
-    <%= f.button :type => 'btn', style: 'border-style: none;' do %>
+    <%= f.button :class => 'likebtn', :type => 'btn', style: 'border-style: none;' do %>
       <i class="fas fa-heart fa-lg heart-red"></i>
     <% end %>
   <% end %>
 <% else %>
   <%= form_with(model: current_user.likes.build, local: true) do |f| %>
     <%= hidden_field_tag :post_id, post.id %>
-    <%= f.button :type => 'btn', style: 'border-style: none;' do %>
+    <%= f.button :class => 'unlikebtn', :type => 'btn', style: 'border-style: none;' do %>
       <i class="far fa-heart fa-lg heart-green"></i>
     <% end %>
   <% end %>

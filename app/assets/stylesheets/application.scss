@@ -175,8 +175,8 @@ body{
 }
 
 .btn-like{
-  background: #ef4d4d;
-  border: solid 5px #ef4d4d;
+  background: #FFFFFF	;
+  border: solid 4px #ef4d4d;
 }
 
 .btn-edit{
@@ -231,4 +231,12 @@ body{
 .actions :hover{
   background: #00bcd4;
   color: white;
+}
+
+.likebtn{
+  background-color: transparent;
+}
+
+.unlikebtn{
+  background-color: transparent;
 }
