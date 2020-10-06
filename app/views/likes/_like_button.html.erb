@@ -1,15 +1,15 @@
 <% if current_user.favorite?(post) %>
   <%= form_with(model: current_user.likes.find_by(post_id: post.id), local: true, method: :delete) do |f| %>
     <%= hidden_field_tag :post_id, post.id %>
-    <%= f.button :type => 'submit', style: 'border-style: none;' do %>
-    <i class="fas fa-heart fa-lg heart-red"></i>
-  <% end %>
+    <%= f.button :type => 'btn', style: 'border-style: none;' do %>
+      <i class="fas fa-heart fa-lg heart-red"></i>
+    <% end %>
   <% end %>
 <% else %>
   <%= form_with(model: current_user.likes.build, local: true) do |f| %>
     <%= hidden_field_tag :post_id, post.id %>
-    <%= f.button :type => 'submit', style: 'border-style: none;' do %>
-    <i class="far fa-heart fa-lg heart-green"></i>
-  <% end %>
+    <%= f.button :type => 'btn', style: 'border-style: none;' do %>
+      <i class="far fa-heart fa-lg heart-green"></i>
+    <% end %>
   <% end %>
 <% end %>

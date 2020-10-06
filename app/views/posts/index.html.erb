@@ -26,26 +26,20 @@
                   </div>
                   <div class="container">
                     <div class="row">
-                      <div class="box">
-                        <div class="col-2 btn">
+                        <div class="btn btn-like">
                           <%= render 'likes/like_button', post: post %>
                         </div>
-                      </div>
                       <% if current_user == post.user %>
-                        <div class="box">
-                          <div class="col-2 btn">
+                          <div class="btn btn-delete">
                             <%= link_to post, method: :delete, data: { confirm: "削除してもよろしいですか?" } do %>
                               <i class="far fa-trash-alt fa-lg delete-btn"></i>
                             <% end %>
                           </div>
-                        </div>
-                        <div class="box">
-                          <div class="col-2 btn">
+                          <div class="btn btn-edit">
                             <%= link_to edit_post_path(post) do %>
                               <i class="far fa-edit fa-lg edit-btn"></i>
                             <% end %>
                           </div>
-                        </div>
                       <% end %>
                     </div>
                   </div>

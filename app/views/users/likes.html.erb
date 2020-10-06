@@ -1,37 +1,41 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12 offset-sm-2">
-  
-    <% if @user.id == current_user.id %>
-      <%= link_to 'プロフィール編集', edit_user_registration_path %>
-    <% end %>
-    
-    <aside class="col-sm-4 aside">
-      <div class="card">
-        <div class="card-header">
-          <div class="username text-center">
-            <h3 class="card-title"><%= @user.name %></h3>
+      
+      <aside class="col-sm-4 aside">
+        <div class="card">
+          <div class="card-header">
+            <div class="username text-center">
+              
+              <h3 class="card-title"><%= @user.name %>
+                <% if @user.id == current_user.id %>
+                  <%= link_to edit_user_registration_path do%>
+                    <i class="fas fa-user-edit user-edit"></i>
+                  <% end %>
+                <% end %>
+              </h3>
+              
+            </div>
           </div>
-        </div>
-        <div class="card-body">
-          <div class="text-center">
-            <div class="round-image">
-              <% if @user.image? %>  
-                 <%= image_tag (@user.image.url) %>
-              <% end %>
+          <div class="card-body">
+            <div class="text-center">
+              <div class="round-image">
+                <% if @user.image? %>  
+                   <%= image_tag (@user.image.url) %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
+      </aside>
+        
+      <div class="col-sm-8">
+        <ul class="nav nav-tabs nav-justified mb-3">
+          <li class="nav-item"><a href="<%= mypage_path(@user) %>" class="nav-link <%= 'active' if current_page?(mypage_path(@user)) %>">投稿 <span class="badge badge-secondary"></span></a></li>
+          <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">お気に入り<span class="badge badge-secondary"></span></a></li>
+        </ul>
+        <%= render 'posts/myposts', posts: @likes %>
       </div>
-    </aside>
-    
-    <div class="col-sm-8">
-      <ul class="nav nav-tabs nav-justified mb-3">
-        <li class="nav-item"><a href="<%= mypage_path(@user) %>" class="nav-link <%= 'active' if current_page?(mypage_path(@user)) %>">投稿 <span class="badge badge-secondary"></span></a></li>
-        <li class="nav-item"><a href="<%= likes_user_path(@user) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>">お気に入り<span class="badge badge-secondary"></span></a></li>
-      </ul>
-      <%= render 'posts/myposts', posts: @likes %>
-    </div>
     </div>
   </div>
 </div>  
