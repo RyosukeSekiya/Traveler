@@ -40,6 +40,7 @@ html {
   background-color: #f8f8f8;
   border-color: #e7e7e7;
   border-width: 1px 0px 0px;
+  margin-top: auto;
 }
 
 .navbar{
@@ -240,3 +241,10 @@ body{
 .unlikebtn{
   background-color: transparent;
 }
+
+.background{
+  background: image-url('traveler.jpeg');
+  background-size: cover;
+}
+
+

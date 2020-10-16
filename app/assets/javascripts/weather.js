@@ -1,7 +1,7 @@
 $(document).on('turbolinks:load', function() {
   var API_KEY = '7ab399170a389d1636f56b881dfa7c40'
   var city = 'Tokyo';
-  var url = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + ',jp&units=metric&APPID=' + API_KEY;
+  var url = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + ',jp&units=metric&lang=ja&APPID=' + API_KEY;
   $.ajax({
     url: url,
     dataType: "json",
@@ -34,6 +34,9 @@ function buildHTML(data, i) {
     '<div class="weather-date">' + day + '</div>' +
     '<div class="weather-main">'+ data.list[i].weather[0].main + '</div>' +
     '<div class="weather-temp">' + Math.round(data.list[i].main.temp) + '℃</div>' +
+    '<div class="weather-temp-max">' + '最高：' + Math.round(data.list[i].main.temp_max) + "℃</div>" +
+    '<span class="weather-temp-min">' + '最低：' + Math.floor(data.list[i].main.temp_min) + "℃</span>" +
+    
   '</div>';
   return html
 }
